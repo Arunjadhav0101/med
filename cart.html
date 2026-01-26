@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - MediCare</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-icon">💊</span>
+                <span class="logo-text">MediCare</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="cart.html" class="active">Cart (<span id="cartCount">0</span>)</a></li>
+                <li><a href="#" onclick="logout()" class="btn-login">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="cart-page">
+        <div class="container">
+            <h1 style="margin-bottom: 30px;">Shopping Cart</h1>
+            
+            <div id="conflictWarning"></div>
+            
+            <div class="cart-container">
+                <div class="cart-items">
+                    <h2>Cart Items</h2>
+                    <div id="cartItemsList"></div>
+                </div>
+                
+                <div class="cart-summary">
+                    <h2>Order Summary</h2>
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping:</span>
+                        <span id="shipping">$5.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (10%):</span>
+                        <span id="tax">$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="total">$0.00</span>
+                    </div>
+                    <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chatbot-container"></div>
+
+    <script src="data.js"></script>
+    <script src="auth.js"></script>
+    <script src="chatbot.js"></script>
+    <script src="main.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html>

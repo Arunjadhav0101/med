@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Catalog - MediCare</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-icon">💊</span>
+                <span class="logo-text">MediCare</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="catalog.html" class="active">Catalog</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="login.html" class="btn-login">Login</a></li>
+                <li><a href="signup.html" class="btn-signup">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="catalog-page">
+        <div class="container">
+            <div class="catalog-header">
+                <h1>Medicine Catalog</h1>
+                <p>Browse our wide selection of medicines</p>
+                
+                <div class="search-filter">
+                    <div class="form-group">
+                        <input type="text" id="searchInput" placeholder="Search medicines...">
+                    </div>
+                    <div class="form-group">
+                        <select id="categoryFilter">
+                            <option value="">All Categories</option>
+                            <option value="Pain Relief">Pain Relief</option>
+                            <option value="Antibiotic">Antibiotic</option>
+                            <option value="Allergy">Allergy</option>
+                            <option value="Digestive">Digestive</option>
+                            <option value="Diabetes">Diabetes</option>
+                            <option value="Blood Pressure">Blood Pressure</option>
+                            <option value="Cholesterol">Cholesterol</option>
+                            <option value="Supplement">Supplement</option>
+                            <option value="Cold & Flu">Cold & Flu</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select id="sortFilter">
+                            <option value="" disabled selected hidden>- Sort -</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="medicine-grid" id="medicineGrid"></div>
+        </div>
+    </div>
+
+    <div id="chatbot-container"></div>
+
+    <script src="data.js"></script>
+    <script src="auth.js"></script>
+    <script src="chatbot.js"></script>
+    <script src="main.js"></script>
+    <script src="catalog.js"></script>
+</body>
+</html>

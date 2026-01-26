@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - MediCare</title>
+    <link rel="stylesheet" href="css/signup.css"> <!-- Changed to signup-styles.css -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-icon">💊</span>
+                <span class="logo-text">MediCare</span>
+            </div>
+           
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <div class="form-card">
+            <h2>Create Account</h2>
+            
+            
+          <form id="signupForm" action="signup.php" method="POST">
+    <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email">
+    </div>
+    
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required placeholder="Create a password">
+    </div>
+    
+    <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+    </div>
+    
+   
+    
+     <button type="submit" class="form-submit">Create Account</button>
+</form>
+
+<div class="form-footer">
+                <p>I have an account? <a href="login.html">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="chatbot-container"></div>
+
+   
+</body>
+</html>

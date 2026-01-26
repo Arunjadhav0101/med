@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare - Your Trusted E-Pharmacy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-icon">💊</span>
+                <span class="logo-text">MediCare</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="home.html" class="active">Home</a></li>
+                <li><a href="catlog.php">Catalog</a></li>
+                <li><a href="orders.php">My Orders</a></li>
+                <li><a href="login.html" class="btn-login">Login</a></li>
+                <li><a href="signup.html" class="btn-signup">Sign Up</a></li>
+            </ul>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Your Health, Our Priority</h1>
+                <!-- <p class="hero-subtitle">AI-powered online pharmacy with smart medicine recommendations and prescription management</p> -->
+                <div class="hero-buttons">
+                    <a href="catlog.php" class="btn btn-primary">Browse Medicines</a>
+                    <a href="signup.html" class="btn btn-secondary">Get Started</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-card">
+                    <div class="card-icon">🏥</div>
+                    <h3>Trusted Service</h3>
+                    <p>Licensed pharmacists</p>
+                </div>
+               
+                <div class="hero-card">
+                    <div class="card-icon">🚚</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Quick & reliable</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose MediCare?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Upload Prescription</h3>
+                    <p>Easy prescription upload with instant verification by licensed pharmacists</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Smart Search</h3>
+                    <p>Find medicines quickly with AI-powered search and recommendations</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3>Medicine Reminders</h3>
+                    <p>Never miss a dose with smart reminder notifications</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>24/7 Chat Support</h3>
+                    <p>Get instant help from our AI chatbot anytime</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚠️</div>
+                    <h3>Conflict Detection</h3>
+                    <p>AI warns you about potential drug interactions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Best Prices</h3>
+                    <p>Competitive pricing with generic alternatives</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container cta-container">
+            <h2>Ready to Experience Smart Healthcare?</h2>
+            <p>Join thousands of satisfied customers who trust MediCare</p>
+            <a href="signup.html" class="btn btn-primary btn-large">Create Your Account</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 MediCare - AI-Powered E-Pharmacy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="chatbot-container"></div>
+
+    <script src="chatbot.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
