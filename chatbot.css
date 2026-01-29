@@ -141,6 +141,34 @@
     40% { transform: scale(1); opacity: 1; }
 }
 
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.action-buttons button {
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.3s ease;
+}
+
+.action-buttons button:hover {
+    background: #5a67d8;
+}
+
+.bot-action-buttons {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+
 @media (max-width: 768px) {
     .chatbot-window {
         width: 300px;

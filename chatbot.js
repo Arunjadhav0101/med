@@ -1,6 +1,8 @@
 class MediCareChatbot {
     constructor() {
         this.isOpen = false;
+        this.currentMedicine = null;
+        this.currentAction = null;
         this.init();
     }
 
@@ -64,7 +66,7 @@ class MediCareChatbot {
 
     addWelcomeMessage() {
         setTimeout(() => {
-            this.addMessage('Hello! I\'m your MediCare assistant. How can I help you today?', 'bot');
+            this.addMessage('Hello! I can help you buy medicines automatically. Just say "I need paracetamol" and I\'ll handle everything!', 'bot');
         }, 500);
     }
 
@@ -90,13 +92,136 @@ class MediCareChatbot {
             
             setTimeout(() => {
                 this.hideTyping();
-                this.addMessage(data.response, 'bot');
+                this.handleResponse(data);
             }, 1000);
             
         } catch (error) {
             this.hideTyping();
             this.addMessage('Sorry, I\'m having trouble right now. Please try again later.', 'bot');
         }
+    }
+
+    handleResponse(data) {
+        // Handle simple text response
+        if (typeof data.response === 'string') {
+            this.addMessage(data.response, 'bot');
+            return;
+        }
+
+        // Handle complex response with actions
+        this.addMessage(data.response, 'bot');
+        
+        if (data.action) {
+            this.currentAction = data.action;
+            this.currentMedicine = data.medicine || null;
+            
+            switch (data.action) {
+                case 'add_to_cart':
+                    this.showQuantityButtons();
+                    break;
+                case 'prescription_required':
+                    this.showPrescriptionButtons();
+                    break;
+            }
+        }
+    }
+
+    showQuantityButtons() {
+        const buttonsHTML = `
+            <div class="action-buttons">
+                <button onclick="chatbot.selectQuantity(1)">1 Strip</button>
+                <button onclick="chatbot.selectQuantity(2)">2 Strips</button>
+                <button onclick="chatbot.selectQuantity(3)">3 Strips</button>
+                <button onclick="chatbot.customQuantity()">Other</button>
+            </div>
+        `;
+        this.addActionButtons(buttonsHTML);
+    }
+
+    showPrescriptionButtons() {
+        const buttonsHTML = `
+            <div class="action-buttons">
+                <button onclick="chatbot.hasPrescription()">Yes, I have prescription</button>
+                <button onclick="chatbot.noPrescription()">No, I need consultation</button>
+            </div>
+        `;
+        this.addActionButtons(buttonsHTML);
+    }
+
+    selectQuantity(qty) {
+        this.removeActionButtons();
+        this.addMessage(`${qty} strip(s)`, 'user');
+        
+        if (this.currentMedicine) {
+            const total = this.currentMedicine.price * qty;
+            this.addMessage(`Perfect! Adding ${qty} x ${this.currentMedicine.name} = ₹${total} to your cart. Proceeding to checkout...`, 'bot');
+            
+            setTimeout(() => {
+                this.addMessage('✅ Added to cart successfully! You can continue shopping or go to checkout. Need anything else?', 'bot');
+                this.simulateAddToCart(this.currentMedicine.id, qty);
+            }, 1500);
+        }
+    }
+
+    customQuantity() {
+        this.removeActionButtons();
+        this.addMessage('How many strips do you need?', 'bot');
+        // Set flag to expect quantity input
+        this.currentAction = 'expecting_quantity';
+    }
+
+    hasPrescription() {
+        this.removeActionButtons();
+        this.addMessage('Yes, I have prescription', 'user');
+        this.addMessage('Great! Please upload your prescription when you checkout. I\'ll add this medicine to your cart.', 'bot');
+        this.showQuantityButtons();
+    }
+
+    noPrescription() {
+        this.removeActionButtons();
+        this.addMessage('No, I need consultation', 'user');
+        this.addMessage('No problem! Our pharmacist can help you. Call +91-9876543210 for free consultation. They can also issue prescription if needed.', 'bot');
+    }
+
+    addActionButtons(html) {
+        const messagesContainer = document.getElementById('chatbot-messages');
+        const buttonDiv = document.createElement('div');
+        buttonDiv.className = 'bot-action-buttons';
+        buttonDiv.innerHTML = html;
+        messagesContainer.appendChild(buttonDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    removeActionButtons() {
+        const buttons = document.querySelector('.bot-action-buttons');
+        if (buttons) buttons.remove();
+    }
+
+    simulateAddToCart(medicineId, quantity) {
+        // Actually add to cart via API
+        fetch('auto_cart.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                action: 'add_medicine',
+                medicine_id: medicineId,
+                quantity: quantity
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('Successfully added to cart');
+            } else if (data.redirect) {
+                this.addMessage('Please login first to add medicines to cart. I can redirect you to login page.', 'bot');
+                setTimeout(() => {
+                    window.location.href = data.redirect;
+                }, 2000);
+            }
+        })
+        .catch(error => {
+            console.log('Cart integration not available, using simulation');
+        });
     }
 
     addMessage(text, sender) {
@@ -120,6 +245,7 @@ class MediCareChatbot {
 }
 
 // Initialize chatbot when DOM is loaded
+let chatbot;
 document.addEventListener('DOMContentLoaded', () => {
-    new MediCareChatbot();
+    chatbot = new MediCareChatbot();
 });
