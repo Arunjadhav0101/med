@@ -1,8 +1,8 @@
 <?php
-define('DB_HOST', '127.0.0.1');
-define('DB_PORT', 3306);   // change to 3306 if needed
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_HOST', 'mysql');  // Docker service name
+define('DB_PORT', 3306);
+define('DB_USER', 'medicare_user');
+define('DB_PASS', 'medicare_pass');
 define('DB_NAME', 'medicare');
 
 function getDBConnection() {

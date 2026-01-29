@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: medicare_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: medicare123
+      MYSQL_DATABASE: medicare
+      MYSQL_USER: medicare_user
+      MYSQL_PASSWORD: medicare_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./medicare\ \(3\).sql:/docker-entrypoint-initdb.d/01-medicare.sql
+      - ./blood_bank.sql:/docker-entrypoint-initdb.d/02-blood_bank.sql
+    networks:
+      - medicare_network
+
+  # PHP Apache Web Server
+  web:
+    build: .
+    container_name: medicare_web
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    volumes:
+      - .:/var/www/html
+    networks:
+      - medicare_network
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=medicare_user
+      - DB_PASS=medicare_pass
+      - DB_NAME=medicare
+
+  # phpMyAdmin for database management
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: medicare_phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: medicare123
+    depends_on:
+      - mysql
+    networks:
+      - medicare_network
+
+volumes:
+  mysql_data:
+
+networks:
+  medicare_network:
+    driver: bridge
