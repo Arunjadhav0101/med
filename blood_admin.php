@@ -61,13 +61,13 @@ $inventory = $conn->query("SELECT blood_group, SUM(units_available) as total FRO
         <div class="container nav-container">
             <div class="logo">
                 <span class="logo-icon">🩸</span>
-                <span class="logo-text">Blood Bank Admin</span>
+                <span class="logo-text">Blood Bank Admin - by Arun Jadhav</span>
             </div>
         </div>
     </nav>
 
     <div class="admin-container">
-        <h2>Blood Bank Management Dashboard</h2>
+        <h2>Blood Bank Management Dashboard - Created by Arun Jadhav</h2>
         
         <div class="admin-grid">
             <!-- Blood Inventory -->

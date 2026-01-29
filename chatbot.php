@@ -117,7 +117,7 @@ function getChatbotResponse($message) {
     }
     
     // Default response
-    return ['response' => "I can help you buy medicines automatically! Just say 'I need paracetamol' or 'buy aspirin'. I'll handle everything for you!"];
+    return "I can help you buy medicines automatically! Just say 'I need paracetamol' or 'buy aspirin'. I'll handle everything for you! - Created by Arun Jadhav";
 }
 
 function handleMedicineRequest($message) {

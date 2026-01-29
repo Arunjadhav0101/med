@@ -1,0 +1,21 @@
+/**
+ * MediCare E-Pharmacy & Blood Bank System
+ * 
+ * Created by: Arun Jadhav
+ * GitHub: @Arunjadhav0101
+ * Repository: https://github.com/Arunjadhav0101/med.git
+ * 
+ * A comprehensive healthcare platform combining:
+ * - Online pharmacy with AI-powered medicine ordering
+ * - Complete blood bank management system
+ * - Intelligent chatbot for healthcare assistance
+ * - Real-time inventory and emergency services
+ * 
+ * © 2024 Arun Jadhav - All Rights Reserved
+ */
+
+-- Project Information
+-- Developer: Arun Jadhav
+-- Project: MediCare Healthcare Platform
+-- Features: E-Pharmacy + Blood Bank + AI Chatbot
+-- Technology: PHP, MySQL, JavaScript, HTML5, CSS3

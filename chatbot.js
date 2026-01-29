@@ -66,7 +66,7 @@ class MediCareChatbot {
 
     addWelcomeMessage() {
         setTimeout(() => {
-            this.addMessage('Hello! I can help you buy medicines automatically. Just say "I need paracetamol" and I\'ll handle everything!', 'bot');
+            this.addMessage('Hello! I\'m MediCare AI Assistant created by Arun Jadhav. I can help you buy medicines automatically and manage blood bank services. Just tell me what you need!', 'bot');
         }, 500);
     }
 
