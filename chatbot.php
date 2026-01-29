@@ -13,6 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 function getChatbotResponse($message) {
+    // Blood bank queries
+    if (strpos($message, 'blood') !== false || strpos($message, 'donate') !== false || strpos($message, 'donor') !== false) {
+        return handleBloodBankQuery($message);
+    }
+    
     // Check if user wants to buy/order medicine
     if (strpos($message, 'buy') !== false || strpos($message, 'order') !== false || strpos($message, 'need') !== false || strpos($message, 'want') !== false) {
         return handleMedicineRequest($message);
@@ -194,5 +199,58 @@ function searchMedicine($name) {
     }
     
     return null;
+}
+
+function handleBloodBankQuery($message) {
+    // Blood donation queries
+    if (strpos($message, 'donate') !== false || strpos($message, 'donor') !== false) {
+        return [
+            'response' => "🩸 Want to donate blood? You can save 3 lives with one donation! Requirements: Age 18-65, Weight 50kg+, Good health. Ready to register?",
+            'action' => 'blood_donation'
+        ];
+    }
+    
+    // Blood request queries
+    if (strpos($message, 'need blood') !== false || strpos($message, 'request blood') !== false || strpos($message, 'blood required') !== false) {
+        return [
+            'response' => "🏥 Need blood urgently? I can help you request blood. What blood group do you need? (A+, B+, O+, AB+, A-, B-, O-, AB-)",
+            'action' => 'blood_request'
+        ];
+    }
+    
+    // Blood availability queries
+    if (strpos($message, 'available') !== false || strpos($message, 'stock') !== false || strpos($message, 'inventory') !== false) {
+        $availability = getBloodAvailability();
+        return [
+            'response' => "📊 Current Blood Stock:\n" . $availability . "\n\nNeed specific blood group? I can help you request it!"
+        ];
+    }
+    
+    // Emergency blood
+    if (strpos($message, 'emergency') !== false || strpos($message, 'urgent') !== false) {
+        return [
+            'response' => "🚨 EMERGENCY BLOOD NEEDED? Call immediately: +91-9876543210. I can also help you submit urgent request. What blood group do you need?"
+        ];
+    }
+    
+    // General blood bank info
+    return [
+        'response' => "🩸 MediCare Blood Bank Services:\n• Donate Blood - Save Lives\n• Request Blood - Get Help\n• Check Availability - Real-time Stock\n• 24/7 Emergency Service\n\nWhat do you need help with?"
+    ];
+}
+
+function getBloodAvailability() {
+    $conn = getDBConnection();
+    if (!$conn) return "Unable to check availability right now.";
+    
+    $result = $conn->query("SELECT blood_group, SUM(units_available) as total FROM blood_inventory WHERE status = 'available' AND expiry_date > CURDATE() GROUP BY blood_group");
+    
+    $availability = "";
+    while ($row = $result->fetch_assoc()) {
+        $status = $row['total'] > 10 ? "✅" : ($row['total'] > 0 ? "⚠️" : "❌");
+        $availability .= "{$status} {$row['blood_group']}: {$row['total']} units\n";
+    }
+    
+    return $availability ?: "No blood stock information available.";
 }
 ?>
