@@ -1,20 +1,23 @@
 # MediCare E-Pharmacy & Blood Bank System
 
-**Created by: Arun Jadhav**
+**Created by: Arun Jadhav, Yogesh Bhore & Prathviraj Bagli**
 
 A comprehensive healthcare platform combining online pharmacy services with a complete blood bank management system.
 
 ## 🏥 Project Overview
 
-MediCare is a full-featured healthcare platform developed by **Arun Jadhav** that includes:
+MediCare is a full-featured healthcare platform developed by **Arun Jadhav, Yogesh Bhore & Prathviraj Bagli** that includes:
 - **E-Pharmacy**: Online medicine ordering with prescription management
 - **Blood Bank**: Complete blood donation and request system
 - **AI Chatbot**: Intelligent assistant for both pharmacy and blood bank services
 - **Admin Dashboard**: Comprehensive management system
 
-## 👨‍💻 Developer
+## 👨‍💻 Development Team
 
-**Arun Jadhav**
+**Arun Jadhav** - Lead Developer & System Architect
+**Yogesh Bhore** - Co-Developer & Database Designer  
+**Prathviraj Bagli** - Co-Developer & Frontend Specialist
+
 - GitHub: [@Arunjadhav0101](https://github.com/Arunjadhav0101)
 - Project Repository: [MediCare System](https://github.com/Arunjadhav0101/med.git)
 
@@ -130,7 +133,7 @@ Bot: "Perfect! Adding 2 x Paracetamol = ₹50 to cart. ✅ Added successfully!"
    - Ensure PHP and MySQL are running
    - Access via `http://localhost/med/home.html`
 
-## 🌟 Unique Features by Arun Jadhav
+## 🌟 Unique Features by Development Team
 
 1. **Conversational Medicine Ordering**: First-of-its-kind chat-based medicine purchasing
 2. **Integrated Healthcare Platform**: Combines pharmacy + blood bank in one system
@@ -140,11 +143,11 @@ Bot: "Perfect! Adding 2 x Paracetamol = ₹50 to cart. ✅ Added successfully!"
 
 ## 📞 Contact & Support
 
-**Developer**: Arun Jadhav  
-**Email**: Contact via GitHub profile  
+**Development Team**: Arun Jadhav, Yogesh Bhore & Prathviraj Bagli  
+**Lead Contact**: Arun Jadhav via GitHub profile  
 **Project**: [github.com/Arunjadhav0101/med](https://github.com/Arunjadhav0101/med)
 
 ---
 
-**© 2024 MediCare System - Developed by Arun Jadhav**  
+**© 2024 MediCare System - Developed by Arun Jadhav, Yogesh Bhore & Prathviraj Bagli**  
 *Revolutionizing healthcare through technology*

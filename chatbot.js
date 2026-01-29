@@ -66,7 +66,7 @@ class MediCareChatbot {
 
     addWelcomeMessage() {
         setTimeout(() => {
-            this.addMessage('Hello! I\'m MediCare AI Assistant created by Arun Jadhav. I can help you buy medicines automatically and manage blood bank services. Just tell me what you need!', 'bot');
+            this.addMessage('Hello! I\'m MediCare AI Assistant created by Arun Jadhav, Yogesh Bhore & Prathviraj Bagli. I can help you buy medicines automatically and manage blood bank services. Just tell me what you need!', 'bot');
         }, 500);
     }
 
