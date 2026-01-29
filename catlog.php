@@ -9,6 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medicine Catalog - MediCare</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chatbot.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* General Styles */
@@ -850,5 +851,6 @@ session_start();
             <?php endif; ?>
         });
     </script>
+    <script src="chatbot.js"></script>
 </body>
 </html>
